@@ -75,7 +75,7 @@ class UpdateParser {
     };
   }
 
-  // eslint-disable-next-line no-useless-constructor
+
   constructor(private paths: Record<string, SchemaType<any>>) { }
 
   /**
@@ -132,7 +132,7 @@ class UpdateParser {
  * @private
  */
 class QueryParser {
-  // eslint-disable-next-line no-useless-constructor
+
   constructor(private paths: Record<string, SchemaType<any>>) { }
 
   /**
@@ -765,7 +765,7 @@ class Schema<T = any> {
 
       if (!item.model) {
         const path = paths[key];
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
         // @ts-ignore
         const ref = path.child ? path.child.options.ref : path.options.ref;
 

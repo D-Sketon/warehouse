@@ -54,7 +54,7 @@ async function exportAsync(database: Database, path: string): Promise<void> {
       throw e;
     }
   } finally {
-    await new Promise<void>((resolve, reject) => {
+    await new Promise<void>((resolve, _reject) => {
       writeStream.end(resolve);
     });
   }
@@ -84,9 +84,9 @@ class Database {
   constructor(options?: { path: string } & Partial<DatabaseOptions>) {
     this.options = {
       version: 0,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+
       onUpgrade() {},
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+
       onDowngrade() {},
       ...options
     };

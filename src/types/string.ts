@@ -47,7 +47,7 @@ class SchemaTypeString extends SchemaType<string> {
    * @param {Object} data
    * @return {Boolean}
    */
-  match(value: string | undefined, query: string | RegExp | undefined, data?: unknown): boolean {
+  match(value: string | undefined, query: string | RegExp | undefined, _data?: unknown): boolean {
     if (!value || !query) {
       return value === query;
     }

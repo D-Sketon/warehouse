@@ -177,8 +177,8 @@ export function reverse<T>(arr: T[]): T[] {
 }
 
 export function parseArgs<B extends string, O extends number | string | Record<string, any>>(orderby: B, order: O): { [key in typeof orderby]: typeof order };
-export function parseArgs<B extends string, O>(orderby: B): Record<string, number>;
-export function parseArgs<B extends Record<string, number>, O>(orderby: B): B;
+export function parseArgs<B extends string>(orderby: B): Record<string, number>;
+export function parseArgs<B extends Record<string, number>>(orderby: B): B;
 export function parseArgs<B extends string | Record<string, number | Record<string, any>>, O extends number | string | Record<string, any>>(orderby: B, order?: O): Record<string, number | string | object>;
 export function parseArgs<B extends string | Record<string, number | Record<string, any>>, O extends number | string | Record<string, any>>(orderby: B, order?: O) {
   let result: Record<string, number | string | Record<string, any>>;

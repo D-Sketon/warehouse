@@ -1,6 +1,6 @@
 import SchemaType from '../schematype';
 import ValidationError from '../error/validation';
-import type { WithImplicitCoercion } from 'buffer';
+type WithImplicitCoercion<T> = T | { valueOf(): T };
 
 /**
  * Boolean schema type.

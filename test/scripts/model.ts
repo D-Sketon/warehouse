@@ -489,7 +489,7 @@ describe('Model', () => {
     {age: 30},
     {age: 20},
     {age: 40}
-  ]).then(data => User.remove({age: 20}).then(removed => {
+  ]).then(data => User.remove({age: 20}).then(() => {
     should.not.exist(User.findById(data[1]._id));
     should.not.exist(User.findById(data[3]._id));
     return [data[0], data[2], data[4]];
@@ -953,7 +953,7 @@ describe('Model', () => {
       return data.age;
     }).should.be.true;
 
-    User.every((data, i) => data.age > 10).should.be.false;
+    User.every(data => data.age > 10).should.be.false;
 
     return data;
   }).map<unknown, any>(item => User.removeById(item._id)));
@@ -966,7 +966,7 @@ describe('Model', () => {
   ]).then(data => {
     let num = 0;
 
-    User.some((data, i) => data.age > 10).should.be.true;
+    User.some(data => data.age > 10).should.be.true;
 
     User.some((data, i) => {
       i.should.eql(num++);
@@ -1315,7 +1315,7 @@ describe('Model', () => {
     return Test.insert([
       {_id: 'A', bool: true},
       {_id: 'B', bool: false}
-    ]).then(data => {
+    ]).then(() => {
       Test._export().should.eql(JSON.stringify([
         {_id: 'A', bool: 1},
         {_id: 'B', bool: 0}

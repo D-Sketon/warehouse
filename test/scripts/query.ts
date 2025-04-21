@@ -502,7 +502,7 @@ describe('Query', () => {
       return data.age;
     }).should.be.true;
 
-    User.find({}).every((data, i) => data.age > 10).should.be.false;
+    User.find({}).every(data => data.age > 10).should.be.false;
 
     return data;
   }).map<unknown, any>(item => User.removeById(item._id)));
@@ -515,7 +515,7 @@ describe('Query', () => {
   ]).then(data => {
     let num = 0;
 
-    User.find({}).some((data, i) => data.age > 10).should.be.true;
+    User.find({}).some(data => data.age > 10).should.be.true;
 
     User.find({}).some((data, i) => {
       i.should.eql(num++);
@@ -559,7 +559,7 @@ describe('Query', () => {
     {age: 30},
     {age: 20},
     {age: 40}
-  ]).then(data => User.find({age: 20}).remove().then(removed => {
+  ]).then(data => User.find({age: 20}).remove().then(() => {
     should.not.exist(User.findById(data[1]._id));
     should.not.exist(User.findById(data[3]._id));
     return [data[0], data[2], data[4]];

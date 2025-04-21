@@ -187,7 +187,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Boolean}
    */
-  q$size(value?: unknown[], query?: unknown, data?: unknown): boolean {
+  q$size(value?: unknown[], query?: unknown, _data?: unknown): boolean {
     return (value ? value.length : 0) === query;
   }
 
@@ -199,7 +199,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Boolean}
    */
-  q$in(value?: unknown[], query?: unknown[], data?: unknown): boolean {
+  q$in(value?: unknown[], query?: unknown[], _data?: unknown): boolean {
     if (!value) return false;
 
     for (let i = 0, len = query.length; i < len; i++) {
@@ -217,7 +217,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Boolean}
    */
-  q$nin<T>(value?: T[], query?: T[], data?: unknown): boolean {
+  q$nin<T>(value?: T[], query?: T[], _data?: unknown): boolean {
     if (!value) return true;
 
     for (let i = 0, len = query.length; i < len; i++) {
@@ -235,7 +235,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Boolean}
    */
-  q$all<T>(value?: T[], query?: T[], data?: unknown): boolean {
+  q$all<T>(value?: T[], query?: T[], _data?: unknown): boolean {
     if (!value) return false;
 
     for (let i = 0, len = query.length; i < len; i++) {
@@ -253,7 +253,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Array}
    */
-  u$push<T>(value?: T[], update?: T | T[], data?: unknown): T[] {
+  u$push<T>(value?: T[], update?: T | T[], _data?: unknown): T[] {
     if (isArray(update)) {
       return value ? value.concat(update) : update;
     }
@@ -274,7 +274,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Array}
    */
-  u$unshift<T>(value?: T[], update?: T | T[], data?: unknown): T[] {
+  u$unshift<T>(value?: T[], update?: T | T[], _data?: unknown): T[] {
     if (isArray(update)) {
       return value ? update.concat(value) : update;
     }
@@ -295,7 +295,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Array}
    */
-  u$pull<T>(value?: T[], update?: T | T[], data?: unknown): T[] {
+  u$pull<T>(value?: T[], update?: T | T[], _data?: unknown): T[] {
     if (!value) return value;
 
     if (isArray(update)) {
@@ -313,7 +313,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Array}
    */
-  u$shift<T>(value?: T[], update?: number | boolean, data?: unknown): T[] {
+  u$shift<T>(value?: T[], update?: number | boolean, _data?: unknown): T[] {
     if (!value || !update) return value;
 
     if (update === true) {
@@ -333,7 +333,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Array}
    */
-  u$pop<T>(value?: T[], update?: number | boolean, data?: unknown): T[] {
+  u$pop<T>(value?: T[], update?: number | boolean, _data?: unknown): T[] {
     if (!value || !update) return value;
 
     const length = value.length;
@@ -355,7 +355,7 @@ class SchemaTypeArray<I, T extends SchemaType<I>> extends SchemaType<I[]> {
    * @param {Object} data
    * @return {Array}
    */
-  u$addToSet<T>(value?: T[], update?: T | T[], data?: unknown): T[] {
+  u$addToSet<T>(value?: T[], update?: T | T[], _data?: unknown): T[] {
     if (isArray(update)) {
       if (!value) return update;
 
