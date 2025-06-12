@@ -108,7 +108,7 @@ export function parse(path: string | any[], map = null) {
         const nextKey = path[i];
         if (!nextKey) return;
 
-        // eslint-disable-next-line no-constant-condition
+
         while (true) {
           c = j === this.stack.length ? this : this.stack[j];
           if (!c) return;
